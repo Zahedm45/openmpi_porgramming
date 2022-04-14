@@ -10,18 +10,14 @@
 //#define INTERVALS 10000000
 #define INTERVALS 10000000
 
-
 int main(int argc, char **argv)
 {
-
     double pi;
     double start_time, end_time, exec_time;
     start_time = omp_get_wtime();
 
     long int intervals = INTERVALS;
     int thread_count = strtol(argv[1], NULL, 10);
-
-
 
     double x, sum = 0.0;
     double dx = 1.0 / (double) intervals;
@@ -32,7 +28,6 @@ int main(int argc, char **argv)
             x = dx * ((double) (i - 0.5));
             sum += 4.0 / (1.0 + x*x);
         }
-
 
 
     pi += dx*sum;
