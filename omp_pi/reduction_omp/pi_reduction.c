@@ -1,6 +1,11 @@
 //
 // Created by MD. Zahed on 13/04/2022.
 //
+
+
+//
+// Created by MD. Zahed on 13/04/2022.
+//
 #include <omp.h>
 #include <stdio.h>
 #include <time.h>
@@ -29,7 +34,7 @@ int main(int argc, char **argv)
     double arr[thread_count];
 
 
-    #pragma omp parallel num_threads(thread_count)
+#pragma omp parallel reduction(+: pi) num_threads(thread_count)
     {
         int rank = omp_get_thread_num();
 
@@ -50,10 +55,8 @@ int main(int argc, char **argv)
             stop = (rank * per_thread);
         }
 
-        double i = 0.0;
-        i += run_loop(start, stop, rank);
-        #pragma omp critical
-        pi += i;
+
+        pi += run_loop(start, stop, rank);
         //arr[rank] = run_loop(start, stop, rank);
     }
 
