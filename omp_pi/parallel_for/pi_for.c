@@ -2,6 +2,8 @@
 // Created by MD. Zahed on 13/04/2022.
 //
 #include <omp.h>
+#include "/usr/local/opt/libomp/include/omp.h"
+
 #include <stdio.h>
 #include <time.h>
 #include <sys/time.h>
@@ -28,7 +30,6 @@ int main(int argc, char **argv)
             x = dx * ((double) (i - 0.5));
             sum += 4.0 / (1.0 + x*x);
         }
-
 
     pi += dx*sum;
 
